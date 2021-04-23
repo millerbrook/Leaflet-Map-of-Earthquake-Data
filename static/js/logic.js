@@ -129,4 +129,32 @@ function createMap(earthquakes) {
   L.control.layers(baseMaps, overlayMaps, {
     collapsed: false
   }).addTo(myMap);
+
+    // Set up the legend
+    var legend = L.control({ position: "bottomright" });
+    legend.onAdd = function() {
+      var div = L.DomUtil.create("div", "info legend");
+      var limits = ["<10", "<20", "<30", "<40", "<50", "<60", "<70", "<80", "<90", ">90"];
+      var colors = ['#fabe6e','#ceb863', '#a4b061', '#7da566', '#5b986d', '#3d8972', '#277a73', '#1f696f', '#245866', '#2a4858'];
+      var labels = [];
+  
+      // Add min & max
+      var legendInfo = "<h3>Earthquake Depths (feet)</h3>" +
+        "<div class=\"labels\">" +
+          "<div class=\"min\">" + limits[0] + "</div>" +
+          "<div class=\"max\">" + limits[limits.length - 1] + "</div>" +
+        "</div>";
+  
+      div.innerHTML = legendInfo;
+  
+      limits.forEach(function(limit, index) {
+        labels.push("<li style=\"background-color: " + colors[index] + "\"></li>");
+      });
+  
+      div.innerHTML += "<ul>" + labels.join("") + "</ul>";
+      return div;
+    };
+  
+    // Adding legend to the map
+    legend.addTo(myMap);
 }
