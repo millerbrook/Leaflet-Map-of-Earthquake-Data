@@ -65,8 +65,8 @@ function createFeatures(earthquakeData) {
     }
   ,
     pointToLayer: function(earthquake,location){
-      console.log(earthquake)
-      console.log(location)
+      //console.log(earthquake)
+      //console.log(location)
       return L.circleMarker(location)
     },
     style: function(earthquake) {
@@ -139,7 +139,7 @@ function createMap(earthquakes) {
       var labels = [];
   
       // Add min & max
-      var legendInfo = "<h3>Earthquake Depths (feet)</h3>" +
+      var legendInfo = "<h3>Earthquake Depth (in feet)</h3>" +
         "<div class=\"labels\">" +
           "<div class=\"min\">" + limits[0] + "</div>" +
           "<div class=\"max\">" + limits[limits.length - 1] + "</div>" +
@@ -152,9 +152,43 @@ function createMap(earthquakes) {
       });
   
       div.innerHTML += "<ul>" + labels.join("") + "</ul>";
+      div.innerHTML += "<h3>Magnitude Scale (1 - 5):</h3>" + "<div class = 'radiiCircles'></div>";
       return div;
+      
     };
-  
+    
     // Adding legend to the map
     legend.addTo(myMap);
+    var svg = d3.select(".radiiCircles").append("svg");
+
+      svg.attr("width", "100px").attr("height", "100px");
+      
+      // Part 2
+      // Binding the SVG to data
+      
+      var circles = svg.selectAll("circle");
+      
+      var rValues = [20, 16, 12, 8, 4];
+      
+      circles.data(rValues)
+          .enter()
+          .append("circle")
+          .attr("cy", function(d) {
+            return d;
+          })
+          .attr("cx", 50)
+          .attr("r", function(d) {
+            return d;
+          })
+          .attr("stroke", "black")
+          .attr("stroke-width", "1")
+          .attr("fill", function(d) {
+              switch (d) {
+                case 20: return '#ffffff';
+                case 16: return '#c7ced3';
+                case 12: return '#909fa8';
+                case 8: return '#5d727f';
+                case 4: return '#2a4858'
+              };
+          });
 }
