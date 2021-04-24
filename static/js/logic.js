@@ -4,7 +4,7 @@ var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_we
 // Perform a GET request to the query URL
 d3.json(queryUrl).then(function(data) {
   // Once we get a response, send the data.features object to the createFeatures function
-  console.log(data.features)
+  //console.log(data.features)
   createFeatures(data.features);
 });
 
@@ -53,13 +53,12 @@ function createFeatures(earthquakeData) {
     }
     return mag;
   };
-   
 
   // Create a GeoJSON layer containing the features array on the earthquakeData object
   // Run the onEachFeature function once for each piece of data in the array
   var earthquakes = L.geoJSON(earthquakeData, {
     onEachFeature: function(earthquake, layer) {
-      console.log(earthquake)
+     // console.log(earthquake)
       layer.bindPopup("<h3>" + earthquake.properties.place +
         "</h3><hr><p>" + new Date(earthquake.properties.time) + "</p>");
     }
@@ -109,19 +108,29 @@ function createMap(earthquakes) {
     "Dark Map": darkmap
   };
 
+   // Create our map, giving it the streetmap and earthquakes layers to display on load
+ var myMap = L.map("map", {
+  center: [
+    34.05, -118.24
+  ],
+  zoom: 4,
+  layers: [streetmap, earthquakes]
+});
+
+  // Use this link to get the geojson data.
+var link = "../static/data/tectonic.json";
+
+// Grabbing our GeoJSON data..
+// d3.json(link).then(function(tectonicData) {
+//   // Creating a GeoJSON layer with the retrieved data
+//   var tectonic = L.geoJson(tectonicData).addTo(myMap);
+// });
+
+
   // Create overlay object to hold our overlay layer
   var overlayMaps = {
     Earthquakes: earthquakes
   };
-
-  // Create our map, giving it the streetmap and earthquakes layers to display on load
-  var myMap = L.map("map", {
-    center: [
-      34.05, -118.24
-    ],
-    zoom: 4,
-    layers: [streetmap, earthquakes]
-  });
 
   // Create a layer control
   // Pass in our baseMaps and overlayMaps
@@ -192,3 +201,5 @@ function createMap(earthquakes) {
               };
           });
 }
+
+
