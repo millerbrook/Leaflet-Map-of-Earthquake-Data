@@ -181,7 +181,7 @@ function createMap(earthquakes) {
             return d;
           })
           .attr("stroke", "black")
-          .attr("stroke-width", "1")
+          .attr("stroke-width", ".1")
           .attr("fill", function(d) {
               switch (d) {
                 case 20: return '#ffffff';
