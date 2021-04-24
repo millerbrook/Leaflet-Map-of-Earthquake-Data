@@ -111,9 +111,9 @@ function createMap(earthquakes) {
    // Create our map, giving it the streetmap and earthquakes layers to display on load
  var myMap = L.map("map", {
   center: [
-    34.05, -118.24
+    16.53, -23.04
   ],
-  zoom: 4,
+  zoom: 2,
   layers: [streetmap, earthquakes]
 });
 
@@ -121,15 +121,16 @@ function createMap(earthquakes) {
 var link = "../static/data/tectonic.json";
 
 // Grabbing our GeoJSON data..
-// d3.json(link).then(function(tectonicData) {
-//   // Creating a GeoJSON layer with the retrieved data
-//   var tectonic = L.geoJson(tectonicData).addTo(myMap);
-// });
+d3.json(link).then(function(tectonicData) {
+  // Creating a GeoJSON layer with the retrieved data
+  var tectonic = L.geoJson(tectonicData).addTo(myMap);
+
 
 
   // Create overlay object to hold our overlay layer
   var overlayMaps = {
-    Earthquakes: earthquakes
+    Earthquakes: earthquakes,
+    Tectonic: tectonic
   };
 
   // Create a layer control
@@ -200,6 +201,7 @@ var link = "../static/data/tectonic.json";
                 case 4: return '#2a4858'
               };
           });
+  });
 }
 
 
