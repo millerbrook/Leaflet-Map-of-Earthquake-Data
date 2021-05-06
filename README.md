@@ -27,13 +27,13 @@ d3.json(queryUrl).then(function(data) {
 ### Step 2
 Plot the data using Leaflet and Mapbox  
   
-![Earthquake Map]()
+![Earthquake Map](static/screenshots/map.png)
 
 ### Step 3  
 
 Add a tectonic plate layer and a legend  
 
-![Earthquake Map w/ Legend and Tectonic Lines]()  
+![Earthquake Map w/ Legend and Tectonic Lines](static/screenshots/Map_Legend_Tectonic.png)  
 
 [Source data on tectonic plates](<https://github.com/fraxen/tectonicplates>)
 
