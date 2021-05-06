@@ -4,6 +4,7 @@
 
 To map earthquake data downloaded from the United States Geological Society (USGS) using Leaflet, and to add a layer helping viewers understand the relationship between earthquakes and the location of tectonic fault lines. Map features include a legend and pop-ups with additional information about particular earthquake events.
 
+---
 ## Steps
 
 ### Step 1
@@ -24,7 +25,8 @@ d3.json(queryUrl).then(function(data) {
 
 
 ### Step 2
-Plot the data using Leaflet and Mapbox
+Plot the data using Leaflet and Mapbox  
+  
 ![Earthquake Map]()
 
 ### Step 3  
@@ -32,6 +34,9 @@ Plot the data using Leaflet and Mapbox
 Add a tectonic plate layer and a legend  
 
 ![Earthquake Map w/ Legend and Tectonic Lines]()  
+
+[Source data on tectonic plates](<https://github.com/fraxen/tectonicplates>)
+
 ---
 
 ## Contact Information
