@@ -1,21 +1,43 @@
-# leaflet-challenge
+# Leaflet Map of Earthquake Data
 
-TASK LIST FOR LEAFLET CHALLENGE HOMEWORK
+## Objective
 
-1. Get your data set --DONE
+To map earthquake data downloaded from the United States Geological Society (USGS) using Leaflet, and to add a layer helping viewers understand the relationship between earthquakes and the location of tectonic fault lines. Map features include a legend and pop-ups with additional information about particular earthquake events.
 
-2. Create a map using Leaflet that plots all of the earthquakes from your data set based on their longitude and latitude. --DONE
+## Steps
 
-3. Your data markers should reflect the magnitude of the earthquake by their size and and depth of the earth quake by color. --DONE
+### Step 1
+Query USGS for recent earthquake data using D3's JSON feature:
 
-4. Include popups that provide additional information about the earthquake when a marker is clicked. --DONE
+```
+// Store our API endpoint inside queryUrl
+var queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.geojson";
 
-5. Create a legend that will provide context for your map data. --DONE
+// Perform a GET request to the query URL
+d3.json(queryUrl).then(function(data) {
+  
+  // Once we get a response, send the data.features object to the createFeatures function
+  //console.log(data.features)
+  createFeatures(data.features);
+});
+```
 
-6. Plot a second data set on your map to illustrate the relationship between tectonic plates and seismic activity. --DONE
 
-7. Pull in a second data set and visualize it along side your original set of data.--DONE 
+### Step 2
+Plot the data using Leaflet and Mapbox
+![Earthquake Map]()
 
-8. Add a number of base maps to choose from as well as separate out our two different data sets into overlays that can be turned on and off independently. --DONE
+### Step 3  
 
-9. Add layer controls to our map. --DONE
+Add a tectonic plate layer and a legend  
+
+![Earthquake Map w/ Legend and Tectonic Lines]()  
+---
+
+## Contact Information
+
+Brook Miller
+
+[Email](millerbrook@gmail.com)
+
+[LinkedIn](www.linkedin.com/in/brook-miller-data)
