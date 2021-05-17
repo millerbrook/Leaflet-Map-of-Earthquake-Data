@@ -5,7 +5,7 @@
 To map self-updating recent earthquake data downloaded from the United States Geological Society (USGS) using Leaflet, and to add a layer helping viewers understand the relationship between earthquakes and the location of tectonic fault lines. Map features include a legend and pop-ups with additional information about particular earthquake events.
 
 ---
-## See the basic visualization here:
+## See the basic visualization here:  
 https://millerbrook.github.io/Leaflet-Map-of-Earthquake-Data/
 ---
 ## Steps
